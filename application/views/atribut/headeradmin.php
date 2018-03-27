@@ -18,6 +18,7 @@
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="<?php echo base_url('assets/css/skins/_all-skins.min.css'); ?>">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/plugins/datatables/dataTables.bootstrap.css') ?>">
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/plugins/sweetalert2/dist/sweetalert2.css') ?>">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <!-- Site wrapper -->
@@ -48,13 +49,13 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="<?php echo base_url('img/work.png'); ?>" class="user-image" alt="User Image">
+              <img src="<?php echo base_url('assets/img/wong.jpg'); ?>" class="user-image" alt="User Image">
               <span class="hidden-xs"><?php echo $this->session->userdata('nama_user');?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="<?php echo base_url('assets/img/img.png'); ?>" class="img-circle" alt="User Image">
+                <img src="<?php echo base_url('assets/img/wong.jpg'); ?>" class="img-circle" alt="User Image">
 
                 <p>
                   <small>SPK Angka Kredit</small>
@@ -89,7 +90,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="<?php echo base_url('assets/img/img.png'); ?>" class="img-circle" alt="User Image">
+          <img src="<?php echo base_url('assets/img/wong.jpg'); ?>" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
@@ -114,7 +115,7 @@
             <i class="fa fa-dashboard"></i> <span>Beranda</span>
           </a>
         </li>
-        <li class="treeview">
+        <li class="treeview hidden">
           <a href="<?php echo base_url('admin/Dosen') ?>">
             <i class="fa fa-user"></i> <span>Data Dosen</span>
           </a>
@@ -122,20 +123,22 @@
 
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-share"></i> <span>Lihat Data Dosen</span>
+            <i class="fa fa-th-list"></i> <span>Data Dosen</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url('admin/Lihatdosen') ?>"><i class="fa fa-circle-o"></i> Data Dosen </a></li>
+            <li><a href="<?php echo base_url('admin/Dosen') ?>"><i class="fa fa-circle-o"></i> <span>Data Dosen</span></a>
+        </li>
+            <li><a href="<?php echo base_url('admin/pengajuan') ?>"><i class="fa fa-circle-o"></i>Verifikasi Pengajuan Dosen </a></li>
 
           </ul>
         </li>
 
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-th-large"></i> <span>Menu Master</span>
+            <i class="fa fa-th-list"></i> <span>Menu Master</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -151,7 +154,7 @@
             <i class="fa fa-th"></i> <span>Lihat Angka Kredit</span>
           </a>
         </li> -->
-        <li class="treeview">
+        <li class="treeview hidden">
           <a href="<?php echo base_url('admin/pengajuan') ?>">
             <i class="fa fa-user"></i> <span>Data Pengajuan Tervalidasi</span>
           </a>

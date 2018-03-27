@@ -14,6 +14,14 @@ class Pengajuan extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('admin/pengajuan');
+		$data['dosen'] = $this->mdl->dataDosen();
+		$this->load->view('admin/pengajuan', $data);
+	}
+
+	public function detail()
+	{
+		$dosen = $_GET['code'];
+		$data['detail'] = $this->mdl->editDosen($dosen)->row();
+		$this->load->view("admin/v_detail_pengajuan", $data);
 	}
 }

@@ -1,27 +1,22 @@
-<?php $this->load->view('atribut/headeradmin'); ?>
+<?php $this->load->view('atribut/headeradmin') ?>
 <div class="content-wrapper">
 	<section class="content-header">
-		<h2>Tambah Dosen</h2>
-		<ol class="breadcrumb">
-			<li><a href="<?php echo base_url('admin/Admin') ?>"><i class="glyphicon glyphicon-home"></i> Beranda</a></li>
-			<li><a href="<?php echo base_url('admin/Dosen') ?>">Dosen</a></li>
-			<li class="active">Tambah Dosen</li>
-		</ol>
+		<h1>FORM EDIT <small>DATA DOSEN</small></h1>
 	</section>
 	<section class="content">
-		<div class="box">
-			<div class="box-header">
-				<h2 class="box-title">Tambah Data Dosen</h2>
+		<div class="box box-success">
+			<div class="box-header with-border">
+				<h1 class="box-title">EDIT DATA DOSEN <?php echo $dosen->nama ?></h1>
 			</div>
 			<div class="box-body">
 				<?= form_open_multipart('admin/Dosen/TambahDosen',['class'=>'form-vertical'])?>
 					<div class="form-group">
 						<label>NIP :</label>
-						<input class="form-control" type="text" name="nip" placeholder="NIP">
+						<input class="form-control" type="text" name="nip" value="<?php echo $dosen->nip ?>">
 					</div>
 					<div class="form-group">
 						<label>NAMA LENGKAP :</label>
-						<input class="form-control"  type="text" name="namaLengkap" placeholder="Nama Lengkap">
+						<input class="form-control"  type="text" name="namaLengkap" value="<?php echo $dosen->nama ?>">
 					</div>
 					<div class="form-group">
 						<label>PANGKAT :</label>
@@ -54,7 +49,7 @@
 					</div>
 					<div class="form-group">
 						<label>UNIT KERJA :</label>
-						<input class="form-control" type="text" name="unitKerja" placeholder="unit kerja">
+						<input class="form-control" type="text" name="unitKerja" value="<?php echo $dosen->unit ?>">
 					</div>
 					<div class="form-group">
 						<label>JURUSAN</label>

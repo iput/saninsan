@@ -36,10 +36,26 @@ class Model_dosen extends CI_model {
 		$data = $this->db->query("SELECT * from dosen where id_dosen=?", array($id));
 		return $data;
 	}
+
+	public function edit_dosen()
+	{
+		$kode = $this->input->post("kode");
+		$this->db->where("id_dosen", $kode);
+		$result = $this->db->get("dosen");
+		if ($result->num_rows()) {
+			return $result->row();
+		}
+	}
+
 	public function updatedatadosen($id,$data)
 	{
-		$this->db->query("update dosen set nama=?,nip=?,pangkat=?,golongan=?,jabatan=?,unit=? where id_dosen=?",array($data['nama'],$data['nip'],$data['pangkat'],$data['golongan'],$data['jabatan'],$data['unit'],$id));
-		unset($id,$data);
+		$this->db->where("id_dosen", $id);
+		$this->db->update("dosen", $data);
+		if ($this->db->affected_rows()) {
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	public function get_sub_pendidikan($id){
@@ -84,23 +100,6 @@ class Model_dosen extends CI_model {
 		}
 		return $unsur;
 	}
-
-	// public function get_uraian($id){
-	// 	$unsur = "<option value='0'>Pilih Uraian</option>";
-	// 	$this->db->select('id_uraian,nama_uraian');
-	// 	$this->db->where('id_sub',$id);
-	// 	$this->db->from('uraian_kegiatan');
-	// 	$query = $this->db->get();
-	// 	$hasil = $query->result_array();
-	// 	foreach ($hasil as $hsl) {
-	// 		$unsur.="<option value='$hsl[id_uraian]'>$hsl[nama_uraian]</option>";
-	// 	}
-	// 	return $unsur;
-	// }
-	// public function get_penelitian(){
-	// 	$query =$this->db->query('select * from unsur_kegiatan ');
-	// 	return $query->result_array();
-	// }
 
 	public function get_penelitian(){
 		$query =$this->db->query('select * from unsur_kegiatan');
@@ -228,10 +227,9 @@ class Model_dosen extends CI_model {
 
 	public function dataDosen()
 	{
-		$this->db->select("*");
-		$this->db->from("dosen");
+		$this->db->where("dosen.is_delete","0");
 		$this->db->join("jurusan","dosen.id_jur=jurusan.id_jur");
-		$data = $this->db->get();
+		$data = $this->db->get("dosen");
 		if ($data->num_rows()>0) {
 			return $data->result_array();
 		}else{
